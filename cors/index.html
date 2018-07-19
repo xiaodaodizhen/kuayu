@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    ee
+</body>
+
+</html>
+<script>
+    let xhr = new XMLHttpRequest();
+
+    // 由于cookie 不允许跨域，所以需要设置xhr.withCredentials进跨域
+    document.cookie = "nam=xg";
+    xhr.withCredentials = true;
+
+    // 默认支持GET POST 方法，其他方法需要在server1.js 中进行设置
+    // xhr.open("GET", 'http://localhost:4000/getData', true);// true是否异步
+    xhr.open("PUT", 'http://localhost:4000/getData', true);
+    xhr.setRequestHeader("name", "xg");// 设置请求头
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                console.log(xhr.response);
+                console.log(xhr.getResponseHeader("name"));// 前端获取名字为name的头
+            }
+        }
+    };
+    xhr.send();
+</script>

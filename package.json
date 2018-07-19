@@ -1,0 +1,9 @@
+{
+  "name": "kuayu",
+  "version": "",
+  "description": "跨域",
+  "dependencies": {
+    "express": "^4.16.3",
+    "ws": "^5.2.2"
+  }
+}

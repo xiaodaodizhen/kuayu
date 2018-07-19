@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    备注：a.html 和b.html 是同域的，http://localhost:3000 c.html 是独立域的 http://localhost:4000 a.html 获取c.html的数据 a.html 先引用c.html c.html
+    把值放到window.name 把a.html 引用地址改到b.html
+    <iframe src="http://localhost:4000/c.html" framborder="0" onload="load()" id="iframe"></iframe>
+</body>
+
+</html>
+<script>
+    let first = true;
+    function load() {
+        if (first) {
+            let iframe = document.getElementById("iframe");
+            iframe.src = "http://localhost:3000/b.html";
+            first = false;
+        } else {
+            console.log(iframe.contentWindow.name);
+        }
+
+    }
+</script>
